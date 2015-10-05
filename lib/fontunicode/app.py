@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# encoding: utf-8
+# -*- coding: utf-8 -*-
 
 # ------------------------------------------------------------------------------
 # font-unicode
@@ -13,17 +13,15 @@ def main():
     import os
     import sys
     from Naked.commandline import Command
-    from Naked.toolshed.state import StateObject
+    from Naked.toolshed.system import stdout, stderr
+    from fontunicode.commands.search import NameSearcher, UnicodeSearcher, UnicodeObject
 
     # ------------------------------------------------------------------------------------------
     # [ Instantiate command line object ]
     #   used for all subsequent conditional logic in the CLI application
     # ------------------------------------------------------------------------------------------
     c = Command(sys.argv[0], sys.argv[1:])
-    # ------------------------------------------------------------------------------
-    # [ Instantiate state object ]
-    # ------------------------------------------------------------------------------
-    state = StateObject()
+
     # ------------------------------------------------------------------------------------------
     # [ Command Suite Validation ] - early validation of appropriate command syntax
     # Test that user entered at least one argument to the executable, print usage if not
@@ -45,18 +43,52 @@ def main():
         from fontunicode.settings import usage as fontunicode_usage
         print(fontunicode_usage)
         sys.exit(0)
-    elif c.version(): # User requested fontunicode version information
+    elif c.version():  # User requested fontunicode version information
         from fontunicode.settings import app_name, major_version, minor_version, patch_version
         version_display_string = app_name + ' ' + major_version + '.' + minor_version + '.' + patch_version
         print(version_display_string)
         sys.exit(0)
+
     # ------------------------------------------------------------------------------------------
     # [ PRIMARY COMMAND LOGIC ]
     # ------------------------------------------------------------------------------------------
 
-    if c.cmd == "print":
-        text = open(os.path.join(os.path.dirname(__file__), 'glyphlist', 'aglfn.txt')).read()
-        print(text)
+    if c.cmd == "list":
+        adobeglyphlist_text = open(os.path.join(os.path.dirname(__file__), 'glyphlist', 'aglfn.txt')).read()
+        print(adobeglyphlist_text)
+        sys.exit(0)
+    elif c.cmd == "search":
+        # if there is not a search, term raise error message and exit
+        if c.argc == 1:
+            stderr("[font-unicode]: Error: Please enter a Unicode search term.", exit=1)
+
+        search_list = c.argv[1:]  # include all command line arguments after the primary command
+        unicode_search_list = []
+        name_search_list = []
+        # get the data from the Adobe glyph list file and Unicode name list file
+        adobeglyphlist_text = open(os.path.join(os.path.dirname(__file__), 'glyphlist', 'aglfn.txt')).read()
+        unicodeglyphlist_text = open(os.path.join(os.path.dirname(__file__), 'glyphlist', 'NamesList.txt')).read()
+
+        for needle in search_list:
+            if needle.startswith('u+'):
+                unicode_search_list.append(needle[2:])  # remove the u+ before adding it to the list for search
+            else:
+                unicode_search_list.append(needle)
+
+        # instantiate the UnicodeObject from the Adobe list data
+        uniobj = UnicodeObject(adobeglyphlist_text, unicodeglyphlist_text)
+
+        if len(unicode_search_list) > 0:
+            us = UnicodeSearcher(uniobj)
+            for needle in unicode_search_list:
+                us.find(needle)
+
+        if len(name_search_list) > 0:
+            pass
+
+    elif c.cmd == "name":
+        pass
+
 
     # ------------------------------------------------------------------------------------------
     # [ DEFAULT MESSAGE FOR MATCH FAILURE ]
@@ -64,7 +96,7 @@ def main():
     # ------------------------------------------------------------------------------------------
     else:
         print("Could not complete the command that you entered.  Please try again.")
-        sys.exit(1) #exit
+        sys.exit(1)  # exit
 
 if __name__ == '__main__':
     main()

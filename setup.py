@@ -28,7 +28,7 @@ def version_read():
 
 
 setup(
-    name='fontunicode',
+    name='font-unicode',
     version=version_read(),
     description='',
     long_description=(docs_read('README.rst')),
@@ -39,7 +39,7 @@ setup(
     platforms=['any'],
     entry_points = {
         'console_scripts': [
-            'fontunicode = fontunicode.app:main'
+            'font-unicode = fontunicode.app:main'
         ],
     },
     packages=find_packages("lib"),
