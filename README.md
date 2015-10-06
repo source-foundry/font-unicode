@@ -26,7 +26,7 @@ $ python setup.py install
 ### Search by Unicode Code Point
 
 ```
-$ font-unicode search [Unicode code point 1] [Unicode code point 2] [...Unicode code point X]
+$ font-unicode search [Unicode code point 1] [...Unicode code point X]
 ```
 
 You can use either the `u+0000` or `0000` format for the Unicode code point queries.  Include one or more queries to the `search` command.
@@ -35,7 +35,7 @@ You can use either the `u+0000` or `0000` format for the Unicode code point quer
 ### Search by Unicode Character Name
 
 ```
-$ font-unicode name [Unicode character name query 1] [Unicode character name query 2] [...Unicode character name query X]
+$ font-unicode name [Unicode character name query 1] [...Unicode character name query X]
 ```
 
 Include one or more character name search terms as arguments to the `name` command.  Surround multi-word queries with quotes.  You can include multiple searches in the same command.
