@@ -55,6 +55,13 @@ The raw [Unicode Standard v8.0.0 names list](https://raw.githubusercontent.com/s
 $ font-unicode list unicode | [other executable]
 ```
 
+For example, you could use `grep` to locate a Unicode code point in the semicolon delimited Adobe Glyph List like this:
+
+```
+$ font-unicode list agl | grep '012E'
+012E;Iogonek;LATIN CAPITAL LETTER I WITH OGONEK
+```
+
 
 ## License
 
