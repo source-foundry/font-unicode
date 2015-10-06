@@ -2,7 +2,7 @@
 
 ## What is font-unicode? 
 
-font-unicode is a command line application that performs searches for Unicode character names by Unicode code point and for Unicode code points by character name.  It supports the Unicode standard v.8.0.0 and the returned data are supplemented with the Adobe Glyph List for New Fonts v1.7 glyph names where applicable. 
+font-unicode is a command line application that performs searches for Unicode character names by Unicode code points, and for Unicode code points by character names.  It supports the Unicode standard v8.0.0.  The query results are supplemented with the Adobe Glyph List for New Fonts v1.7 glyph names where applicable. 
 
 ## Install
 
