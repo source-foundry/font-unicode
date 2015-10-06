@@ -6,6 +6,7 @@ import re
 import os
 import sys
 
+
 class UnicodeObject(object):
     def __init__(self, adobe_glyphtext, unicode_glyphtext):
         self.adobe_glyphtext = adobe_glyphtext

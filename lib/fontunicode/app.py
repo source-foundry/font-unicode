@@ -13,8 +13,8 @@ def main():
     import os
     import sys
     from Naked.commandline import Command
-    from Naked.toolshed.system import stdout, stderr
-    from fontunicode.commands.search import NameSearcher, UnicodeSearcher, UnicodeObject
+    from Naked.toolshed.system import stderr
+    from fontunicode.commands.search import name_find, unicode_find
 
     # ------------------------------------------------------------------------------------------
     # [ Instantiate command line object ]
@@ -54,9 +54,14 @@ def main():
     # ------------------------------------------------------------------------------------------
 
     if c.cmd == "list":
-        adobeglyphlist_text = open(os.path.join(os.path.dirname(__file__), 'glyphlist', 'aglfn.txt')).read()
-        print(adobeglyphlist_text)
-        sys.exit(0)
+        if c.cmd2 == "agl":
+            adobeglyphlist_text = open(os.path.join(os.path.dirname(__file__), 'glyphlist', 'aglfn.txt')).read()
+            print(adobeglyphlist_text)
+            sys.exit(0)
+        elif c.cmd2 == "unicode":
+            unicodenamelist_text = open(os.path.join(os.path.dirname(__file__), 'glyphlist', 'NamesList.txt')).read()
+            print(unicodenamelist_text)
+            sys.exit(0)
     elif c.cmd == "search":
         # if there is not a search, term raise error message and exit
         if c.argc == 1:
@@ -64,10 +69,6 @@ def main():
 
         search_list = c.argv[1:]  # include all command line arguments after the primary command
         unicode_search_list = []
-        name_search_list = []
-        # get the data from the Adobe glyph list file and Unicode name list file
-        adobeglyphlist_text = open(os.path.join(os.path.dirname(__file__), 'glyphlist', 'aglfn.txt')).read()
-        unicodeglyphlist_text = open(os.path.join(os.path.dirname(__file__), 'glyphlist', 'NamesList.txt')).read()
 
         for needle in search_list:
             if needle.startswith('u+'):
@@ -75,21 +76,21 @@ def main():
             else:
                 unicode_search_list.append(needle)
 
-        # instantiate the UnicodeObject from the Adobe list data
-        uniobj = UnicodeObject(adobeglyphlist_text, unicodeglyphlist_text)
-
         if len(unicode_search_list) > 0:
-            us = UnicodeSearcher(uniobj)
-            for needle in unicode_search_list:
-                us.find(needle)
+            unicode_find(unicode_search_list)
+    elif c.cmd == "name":
+        # if there is not a search, term raise error message and exit
+        if c.argc == 1:
+            stderr("[font-unicode]: Error: Please enter a glyph name search term.", exit=1)
+
+        search_list = c.argv[1:]
+        name_search_list = []
+
+        for needle in search_list:
+            name_search_list.append(needle)
 
         if len(name_search_list) > 0:
-            pass
-
-    elif c.cmd == "name":
-        pass
-
-
+            name_find(name_search_list)
     # ------------------------------------------------------------------------------------------
     # [ DEFAULT MESSAGE FOR MATCH FAILURE ]
     #  Message to provide to the user when all above conditional logic fails to meet a true condition

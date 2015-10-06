@@ -35,7 +35,7 @@ setup(
     url='',
     license='MIT license',
     author='Christopher Simpkins',
-    author_email='',
+    author_email='chris@sourcefoundry.org',
     platforms=['any'],
     entry_points = {
         'console_scripts': [

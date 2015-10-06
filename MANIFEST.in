@@ -1,1 +1,2 @@
 recursive-include docs *
+recursive-include lib/fontunicode/glyphlist *.txt *.db
