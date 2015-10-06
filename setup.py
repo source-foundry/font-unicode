@@ -30,9 +30,9 @@ def version_read():
 setup(
     name='font-unicode',
     version=version_read(),
-    description='',
+    description='Command line Unicode character code point and character name search',
     long_description=(docs_read('README.rst')),
-    url='',
+    url='https://github.com/source-foundry/font-unicode',
     license='MIT license',
     author='Christopher Simpkins',
     author_email='chris@sourcefoundry.org',
@@ -45,7 +45,19 @@ setup(
     packages=find_packages("lib"),
     package_dir={'': 'lib'},
     install_requires=['Naked'],
-    keywords='',
+    keywords='unicode, font, fonts, typeface, typefaces, type, type design, type development, character, code point, name, search',
     include_package_data=True,
-    classifiers=[],
+    classifiers=[
+        'Intended Audience :: End Users/Desktop',
+        'Development Status :: 4 - Beta',
+        'Natural Language :: English',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 3',
+        'Operating System :: MacOS :: MacOS X',
+        'Operating System :: POSIX',
+        'Operating System :: Unix',
+        'Operating System :: Microsoft :: Windows'
+    ],
 )
