@@ -63,7 +63,7 @@ $ font-unicode list agl | grep '012E'
 ```
 
 
-## License
+## Licenses
 
 font-unicode is licensed under the MIT license.  The full text of the license is available [here](https://github.com/source-foundry/font-unicode/blob/master/docs/LICENSE).
 
