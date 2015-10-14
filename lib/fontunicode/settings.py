@@ -11,7 +11,7 @@ app_name = 'font-unicode'
 # ------------------------------------------------------------------------------
 major_version = "0"
 minor_version = "9"
-patch_version = "0"
+patch_version = "1"
 
 # ------------------------------------------------------------------------------
 # Debug Flag (switch to False for production release code)
@@ -23,6 +23,9 @@ debug = False
 # ------------------------------------------------------------------------------
 usage = """
 font-unicode [primary cmd] [arg 1] <arg 2> <...arg x>
+
+Primary Commands: list, name, search
+Use `font-unicode --help` for more information
 """
 
 # ------------------------------------------------------------------------------
@@ -41,6 +44,12 @@ ABOUT
 font-unicode is a command line search tool for identification of Unicode character name by code point search, and code point by name search.
 
 It supports the Unicode Standard v8.0 and data are supplemented with the Adobe Glyph List for New Fonts v1.7 glyph names where applicable.
+
+PRIMARY COMMANDS
+
+  list: pipe raw Unicode standard data to standard output
+  name: search by Unicode character name
+search: search by Unicode code point
 
 USAGE
 
