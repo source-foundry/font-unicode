@@ -1,6 +1,3 @@
-font-unicode
-------------
-
 What is font-unicode?
 ---------------------
 
