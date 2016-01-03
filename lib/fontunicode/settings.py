@@ -11,7 +11,7 @@ app_name = 'font-unicode'
 # ------------------------------------------------------------------------------
 major_version = "0"
 minor_version = "9"
-patch_version = "1"
+patch_version = "2"
 
 # ------------------------------------------------------------------------------
 # Debug Flag (switch to False for production release code)
