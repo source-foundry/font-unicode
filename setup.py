@@ -44,7 +44,7 @@ setup(
     },
     packages=find_packages("lib"),
     package_dir={'': 'lib'},
-    install_requires=['Naked'],
+    install_requires=['commandlines'],
     keywords='unicode, font, fonts, typeface, typefaces, type, type design, type development, character, code point, name, search',
     include_package_data=True,
     classifiers=[

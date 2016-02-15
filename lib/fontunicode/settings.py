@@ -34,7 +34,7 @@ Use `font-unicode --help` for more information
 help = """---------------------------------------------------------
  font-unicode
  Unicode character code point and character name search
- Copyright 2015 Christopher Simpkins
+ Copyright 2016 Christopher Simpkins
  MIT license
  Source: https://github.com/source-foundry/font-unicode
 ---------------------------------------------------------
@@ -49,7 +49,7 @@ PRIMARY COMMANDS
 
   list: pipe raw Unicode standard data to standard output
   name: search by Unicode character name
-search: search by Unicode code point
+search: search by Unicode code point using u+XXXX, U+XXXX, or XXXX syntax
 
 USAGE
 
